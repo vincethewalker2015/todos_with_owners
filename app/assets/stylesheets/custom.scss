@@ -1,0 +1,128 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+.footer {
+  color: #d3d3d3;
+  margin-top: 300px;
+}
+
+/* Jumbotron */
+
+.jumbotron {
+  background-image: asset-url("london.png");
+  background-size: cover;
+  height: 600px;
+}
+
+.jumbotron h1 {
+  color: #fff;
+}
+
+/* Home Page */
+.btn {
+  
+  border-radius: 7px;
+}
+
+.fancy {
+  background-color: #5C606B;
+  color: white;
+  
+}
+
+.fancy:hover {
+  background-color: #CBD1DC;
+  color: white;
+}
+
+.home-text {
+  font-family: bookman body copy;
+}
+
+/* New Page */
+
+.new-page-text {
+  margin-bottom: 80px;
+}
+
+/* The Wells */
+
+.well.profile-black-white {
+    background-color: #ffffff;
+    border: 9px solid black;
+    border-radius: 25px;
+}
+
+.well.profile-black-white-thin {
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.well.profile-black-white-thin-b {
+    background-color: #e6f7ff;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+
+/* Name and Description Tags */
+
+.name {
+  text-align: justify;
+  color: red;
+}
+
+/* Index page */
+
+.spacer {
+  visibility: hidden;
+}
+
+.bttn {
+  border: 2px solid white;
+}
+
+.texties {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+/* Show Page */
+.descriptionText {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+.removedot {
+  list-style-type: none;
+  color: #004085;
+  background-color: #cce5ff;
+  border: 2px;
+  border-color: #004085;
+  border-radius: 2px;
+  padding-left: 5px;
+}

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">To Do List</h1>
+    <div class="col-md-8 col-md-offset-2">
+        <p>
+          <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
+        </p>
+          <table class="row">
+            <tr>
+              <th>Name</th>
+              <th class="spacer">gkdgdkdgklbkLJDGLK</th>
+              <th>Description</th>
+            </tr>
+            <% @todos.each do |todo| %>
+              <tr class ="well profile-black-white-thin row <%= cycle('profile-black-white-thin-b', '') %>"> 
+                <td class="texties"><%= todo.name %></td>
+                <td class="texties"><%= todo.description %></td>
+                <td><%= link_to "Edit", edit_todo_path(todo), class: "btn btn-warning bttn" %></td>
+                <td><%= link_to "View", todo_path(todo), class: "btn btn-info bttn" %></td>
+                <td><%= link_to "Delete", todo_path(todo), method: :delete, data: {confirm: "Are you sure??"}, class: "btn btn-danger bttn" %></td>
+            </tr>
+          <% end %>
+        </table>
+    </div>
+  </div>
+</div>
