@@ -1,17 +1,24 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
   
+  def index
+    @todos = Todo.all
+  end
+  
   def new
     @todo = Todo.new
+    #@todo = Todo.paginate(page: params[:page], per_page: 5)
   end
   
   def create
     @todo = Todo.new(todo_params)
+    @todo.user = current_user
+    #@todo.user = User.first
     if @todo.save
       flash[:success] = "Todo was successfully created"
       redirect_to todo_path(@todo)
     else
-      flash[:danger] ="Nope... Try it again"
+      flash.now[:danger] ="Nope... Try it again"
       render 'new'
     end
   end
@@ -34,9 +41,6 @@ class TodosController < ApplicationController
     end
   end
   
-  def index
-    @todos = Todo.all
-  end
   
   def destroy
      @todo.destroy
