@@ -2,8 +2,17 @@
   <h2 class="text-center new-page-text">Create a ToDo</h2>
 </div>
 
+
 <% render "todos/errors" %>
 
 
-
-<%= render "todos/form" %>
+<div class="container">
+  <% if logged_in? %>
+   <%= render "todos/form" %> 
+  <% else %>
+   <div class="alert alert-danger center" role="alert">
+      Please log in...
+    </div>
+     <%= link_to "Log in", login_path , class: "btn btn-warning center-block "%>
+  <% end %>
+</div>  
