@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <h1 class="text-center">To Do List</h1>
+    <h1 class="text-center"><%= current_user.name %>'s to do List</h1>
     <div class="col-md-8 col-md-offset-2">
         <p>
           <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
           <%= link_to "log Out", login_path, method: :delete, class: "btn btn-danger" %>
+          <td><%= link_to "Users", users_path(@users), class: "btn btn-primary bttn" %></td>
         </p>
           <table class="row">
             <tr>
