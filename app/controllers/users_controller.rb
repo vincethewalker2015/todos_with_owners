@@ -13,10 +13,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Profile has been created"
+      flash.now[:success] = "Profile has been created"
       redirect_to user_path(@user)
     else
-      flash.now[:danger] = "Oopd that didnt work! Lets try that again..."
+      flash.now[:danger] = "Oops that didnt work! Lets try that again..."
       render 'new'
     end
     
@@ -33,13 +33,20 @@ class UsersController < ApplicationController
   def update
     @user =  User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Your Details have been updated"
+      flash.now[:success] = "Your Details have been updated"
     redirect_to user_path(@user)
     else
     render 'edit'
     end
   end
   
+  def destroy
+    @user =  User.find(params[:id])
+    @user.destroy
+    flash.now[:success] = "User was Deleted"
+    redirect_to users_path
+  end
+
   private
   
   def user_params
@@ -48,9 +55,9 @@ class UsersController < ApplicationController
   end
   
   def require_same_user
-    if current_user != @user
+    if current_user != @current_user
       flash[:danger] = "You can only edit or delete your own chef account"
-      redirect_to users_path
+      redirect_to user_path
     end
   end
 end

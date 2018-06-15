@@ -3,9 +3,11 @@
     <h1 class="text-center">User: <%= current_user.name %></h1>
     <div class="col-md-8 col-md-offset-4">
         <p>
-          <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
-          <%= link_to "log Out", login_path, method: :delete, class: "btn btn-danger" %>
-          <%= link_to "Todo List", todos_path, class: "btn btn-primary" %>
+            <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
+            <%= link_to "log Out", login_path, method: :delete, class: "btn btn-danger" %>
+            <%= link_to "Todo List", todos_path, class: "btn btn-primary" %>
+            <%= link_to "Edit Me", user_path(current_user), class: "btn btn-warning" %>
+            
         </p>
           <table class="row center">
             <tr>
@@ -17,12 +19,6 @@
               <tr class ="well profile-black-white-thin row <%= cycle('profile-black-white-thin-b', '') %>"> 
                 <td class="texties"><%= user.name %></td>
                 <td class="texties"><%= user.email %></td>
-                
-                <% if logged_in? && current_user == @users %>
-                  <td><%= link_to "Edit", edit_user_path(user), class: "btn btn-warning bttn" %></td>
-                  <td><%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure??"}, 
-                                                                      class: "btn btn-danger bttn" %></td>
-                <% end %>
             </tr>
           <% end %>
         </table>
