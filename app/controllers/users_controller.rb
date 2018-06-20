@@ -1,4 +1,5 @@
 class UsersController < ApplicationController 
+  before_action :require_user #except: [:index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
@@ -43,8 +44,9 @@ class UsersController < ApplicationController
   def destroy
     @user =  User.find(params[:id])
     @user.destroy
+    session[:user_id] = nil #New add here
     flash.now[:success] = "User was Deleted"
-    redirect_to users_path
+    redirect_to root_path
   end
 
   private

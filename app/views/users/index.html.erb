@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <h1 class="text-center">User: <%= current_user.name %></h1>
-    <div class="col-md-8 col-md-offset-4">
+    <h1 align="center">User: <%= current_user.name %></h1>
+    <div align="center">
         <p>
             <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
-            <%= link_to "log Out", login_path, method: :delete, class: "btn btn-danger" %>
+            <%= link_to "log Out", login_path, method: :delete, class: "btn btn-danger fancy" %>
             <%= link_to "Todo List", todos_path, class: "btn btn-primary" %>
             <%= link_to "Edit Me", user_path(current_user), class: "btn btn-warning" %>
-            
+            <%= link_to "Destroy Me", user_path(current_user), method: :delete,  class: "btn btn-danger" %>
         </p>
           <table class="row center">
             <tr>

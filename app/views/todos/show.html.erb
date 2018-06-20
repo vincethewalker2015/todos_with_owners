@@ -1,5 +1,4 @@
 <div class="container">
- <% if logged_in? %>
 <div class="row">
     <h2 class="text-center">My To Do</h2>
       <div class="col-md-4 col-md-offset-4">
@@ -15,10 +14,4 @@
             </p>
         </div>
       </div>
-  <% else %>
-     <div class="alert alert-danger center" role="alert">
-        Please log in...
-      </div>
-       <%= link_to "Log in", login_path , class: "btn btn-warning center-block "%>
-  <% end %>
 </div>
