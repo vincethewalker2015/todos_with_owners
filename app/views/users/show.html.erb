@@ -10,8 +10,8 @@
                  <%= link_to "Log Out", login_path, method: :delete, class: "btn btn-danger" %>
                  <%= link_to "Create a To do", new_todo_path, class: "btn btn-success" %>
                  <%= link_to "Todo List", todos_path, class: "btn btn-warning" %>
-                 <% if logged_in? && current_user == @user %>
                     <td><%= link_to "Edit", edit_user_path(current_user), class: "btn btn-primary bttn" %></td>
+                <% if logged_in? && current_user.admin? && !@user.admin? %>
                     <td><%= link_to "Delete Me", user_path(current_user), method: :delete, data: {confirm: "Are you sure??"}, 
                                                                         class: "btn btn-danger bttn" %></td>
                 <% end %>

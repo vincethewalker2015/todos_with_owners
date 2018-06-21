@@ -7,7 +7,7 @@
             <br />
             <p><span class="descriptionText">Description:</span> <%= @todo.description %></p>
              <p>
-               <% if logged_in? && current_user == @todo.user %>
+               <% if logged_in? && (current_user == @todo.user || current_user.admin?) %>
                 <%= link_to "Edit This To Do", edit_todo_path(@todo), class: "btn btn-primary" %> 
               <% end %>
               <%= link_to "Back to Index", todos_path, class: "btn btn-warning" %>

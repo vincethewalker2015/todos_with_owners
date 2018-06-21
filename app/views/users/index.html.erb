@@ -1,13 +1,12 @@
 <div class="container">
   <div class="row">
-    <h1 align="center">User: <%= current_user.name %></h1>
+    <h1 align="center">User: <%= current_user.name %> <%= "(Admin)" if current_user.admin? %></h1>
     <div align="center">
         <p>
             <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
             <%= link_to "log Out", login_path, method: :delete, class: "btn btn-danger fancy" %>
             <%= link_to "Todo List", todos_path, class: "btn btn-primary" %>
             <%= link_to "Edit Me", user_path(current_user), class: "btn btn-warning" %>
-            <%= link_to "Destroy Me", user_path(current_user), method: :delete,  class: "btn btn-danger" %>
         </p>
           <table class="row center">
             <tr>
@@ -16,9 +15,12 @@
               <th>Description</th>
             </tr>
             <% @users.each do |user| %>
-              <tr class ="well profile-black-white-thin row <%= cycle('profile-black-white-thin-b', '') %>"> 
+              <tr class ="well profile-black-white-thin row <%= cycle('profile-black-white-thin-b', '') %>">
                 <td class="texties"><%= user.name %></td>
                 <td class="texties"><%= user.email %></td>
+                <% if logged_in? && current_user.admin? && !user.admin?  %>
+                  <td><%= link_to "Destroy Me", user_path(current_user), method: :delete,  class: "btn btn-outline-danger" %></td
+                <% end %>
             </tr>
           <% end %>
         </table>

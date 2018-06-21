@@ -18,7 +18,7 @@
                 <td class="texties"><%= todo.name %></td>
                 <td class="texties"><%= todo.description %></td>
                 <td><%= link_to "View", todo_path(todo), class: "btn btn-info bttn" %></td>
-                <% if logged_in? && current_user == todo.user %>
+                <% if logged_in? && (current_user == todo.user || current_user.admin?) %>
                   <td><%= link_to "Edit", edit_todo_path(todo), class: "btn btn-warning bttn" %></td>
                   <td><%= link_to "Delete", todo_path(todo), method: :delete, data: {confirm: "Are you sure??"}, 
                                                                       class: "btn btn-danger bttn" %></td>
