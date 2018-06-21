@@ -1,5 +1,5 @@
 class UsersController < ApplicationController 
-  before_action :require_user #except: [:index]
+  #before_action :require_user, except: [:root]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   before_action :require_admin, only: [:destroy]
   
@@ -43,11 +43,11 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    @user =  User.find(params[:id])
-    @user.destroy
-    session[:user_id] = nil #New add here
-    flash.now[:success] = "User was Deleted"
-    redirect_to root_path
+      @user =  User.find(params[:id])
+      @user.destroy
+      session[:user_id] = nil #New add here
+      flash.now[:success] = "User was Deleted"
+      redirect_to root_path
   end
 
   private
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   end
   
   def require_admin
-    if logged_in? && !current_chef.admin?
+    if logged_in? && !current_user.admin?
       flash[:danger] = "Only admin users can perform this action"
       redirect_to root_path
     end
