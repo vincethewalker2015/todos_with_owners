@@ -1,6 +1,6 @@
 class UsersController < ApplicationController 
   #before_action :require_user, except: [:root]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:destroy]
   before_action :require_admin, only: [:destroy]
   
   def index
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   
   def require_same_user
     if current_user != @user and !current_user.admin?
-      flash[:danger] = "You can only edit or delete your own chef account"
+      flash[:danger] = "You can only edit or delete your own account"
       redirect_to user_path
     end
   end

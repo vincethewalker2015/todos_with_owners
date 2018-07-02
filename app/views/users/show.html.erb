@@ -5,18 +5,27 @@
           <div class="well">
             <p><span class="descriptionText">Name:</span> <%= @user.name %></p>
               <br />
-              <p><span class="descriptionText">Email:</span> <%= @user.email %></p>
-               <p>
-                 <%= link_to "Log Out", login_path, method: :delete, class: "btn btn-danger" %>
-                 <%= link_to "Create a To do", new_todo_path, class: "btn btn-success" %>
-                 <%= link_to "Todo List", todos_path, class: "btn btn-warning" %>
-                    <td><%= link_to "Edit", edit_user_path(current_user), class: "btn btn-primary bttn" %></td>
-                <% if logged_in? && current_user.admin? && !@user.admin? %>
-                    <td><%= link_to "Delete Me", user_path(current_user), method: :delete, data: {confirm: "Are you sure??"}, 
-                                                                        class: "btn btn-danger bttn" %></td>
+              <% if @user.todos.count != 0 %>
+              <p><span class="descriptionText">Todos:</span> <%= @user.todos.count %></p>
+                <% else %>
+                <h4>You don't have any Todos yet..</h4>
                 <% end %>
-              </p>
-          </div>
+                <br />
+                  <p><span class="descriptionText">Email:</span> <%= @user.email %></p>
+                   <p>
+                     <%= link_to "Log Out", login_path, method: :delete, class: "btn btn-danger" %>
+                     <%= link_to "Create a To do", new_todo_path, class: "btn btn-success" %>
+                     <%= link_to "Todo List", todos_path, class: "btn btn-warning" %>
+                        <td><%= link_to "Edit", edit_user_path(current_user), class: "btn btn-primary bttn" %></td>
+                    <% if logged_in? && current_user.admin? && !@user.admin? %>
+                        <td><%= link_to "Delete Me", user_path(current_user), method: :delete, data: {confirm: "Are you sure??"}, 
+                                                                            class: "btn btn-danger bttn" %></td>
+                    <% end %>
+                    <% if logged_in? && current_user.admin?  %>
+                    <%= link_to "Create New Owner", new_owner_path, class: "btn btn-success" %>
+                    <% end %>
+                  </p>
+            </div>
         </div>
     </div>
 </div>

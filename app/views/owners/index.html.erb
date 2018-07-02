@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <h1 align="center">Users</h1>
-    <h3 align="center">I am <%= current_user.name %> <%= "(Admin)" if current_user.admin? %></h3>
+    <h1 align="center">Owners</h1>
+    <h3 align="center">User: <%= current_user.name %> <%= "(Admin)" if current_user.admin? %></h3>
     <div align="center">
         <p>
             <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
@@ -11,17 +11,11 @@
         </p>
           <table class="row center">
             <tr>
-              <th>Name</th>
-              <th class="spacer">gkdgdkdgklbkLJDGLK</th>
-              <th>Description</th>
+              <th align="center">Owner Name</th>
             </tr>
-            <% @users.each do |user| %>
+            <% @owners.each do |owner| %>
               <tr class ="well profile-black-white-thin row <%= cycle('profile-black-white-thin-b', '') %>">
-                <td class="texties"><%= user.name %></td>
-                <td class="texties"><%= user.email %></td>
-                <% if logged_in? && current_user.admin? && !user.admin?  %>
-                  <td><%= link_to "Destroy Me", user_path(user), method: :delete,  data: {confirm: "Are you sure??"},  class: "btn btn-outline-danger" %></td
-                <% end %>
+                <td class="texties tabtext"><%= link_to owner.name.capitalize, owner_path(owner) %></td>
             </tr>
           <% end %>
         </table>

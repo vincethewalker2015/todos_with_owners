@@ -1,0 +1,10 @@
+<% if logged_in? && current_user.admin?  %>
+
+<div class="row">
+  <h2 class="text-center new-page-text">Become an owner</h2>
+</div>
+
+<%= render "owners/errors" %>
+<%= render "owners/owner_form" %>
+
+<% end %>
