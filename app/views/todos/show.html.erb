@@ -5,8 +5,11 @@
         <div class="well">
           <p><span class="descriptionText">Name:</span> <%= @todo.name %></p>
             <br />
-            <p><span class="descriptionText">Description:</span> <%= @todo.description %></p>
+            <p><span class="descriptionText">Description: </span> <%= @todo.description %></p>
             <p><span class="descriptionText">Created by: </span><%= @todo.user.name %></p>
+            <% if @todo.owners.any? %>
+              <p><span class="descriptionText">Assigned to: </span><%= render @todo.owners %></p>
+            <% end %>
              <p>
                <% if logged_in? && (current_user == @todo.user || current_user.admin?) %>
                 <%= link_to "Edit This To Do", edit_todo_path(@todo), class: "btn btn-primary" %> 

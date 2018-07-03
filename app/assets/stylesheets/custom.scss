@@ -142,7 +142,16 @@ textarea {
  
  .list-text {
    font-weight: bold;
-   color: #004085 ;
+   color: #004085;
  }
 
+/* Owners _form.html.erb */
+.input_checkbox input {
+  width: auto !important;
+ 
+}
+
+.check_box {
+   margin-left: 50px;
+}
 

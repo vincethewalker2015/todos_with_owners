@@ -57,7 +57,7 @@ class TodosController < ApplicationController
   end
   
   def todo_params
-    params.require(:todo).permit(:name, :description)
+    params.require(:todo).permit(:name, :description, owner_ids: [] )
   end
   
   def require_same_user

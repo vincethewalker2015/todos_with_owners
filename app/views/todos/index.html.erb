@@ -12,7 +12,11 @@
              <div class="col-md-8 col-md-offset-2 well profile-black-white-thin row "<%= cycle('profile-black-white-thin-b', '') %>>
                <p>Todo: <%= todo.name %></p>
                <p>Description: <%= todo.description %></p>
-               <p>Owner: <%= render todo.owners %></p>
+               <% if todo.owners.count == 0 %>
+               <h5>This Todo has not yet been assigned</h5>
+               <% else %>
+               <p>Assigned: <%= render todo.owners %> as Owner</p>
+               <% end %>
                <%= link_to "View", todo_path(todo), class: "btn btn-info bttn" %>
                 <% if logged_in? && (current_user == todo.user || current_user.admin?) %>
                   <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-warning bttn" %>
