@@ -17,7 +17,8 @@
                <%= f.text_area :description, rows: 5, class: 'form-control', placeholder: "Add todo description" %>
              </div>
            </div>
-           <div class="form-group">
+           <% if logged_in? && current_user.admin? %>
+             <div class="form-group">
              <div class="row check_box">
                <div class="col-md-offset-2 col-md-8">
                  <%= f.collection_check_boxes :owner_ids, Owner.all, :id, :name do |cb| %>
@@ -26,6 +27,7 @@
                </div> 
              </div>
            </div>
+           <% end %>
           <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
               <%= f.submit class: "btn btn-primary" %> 
