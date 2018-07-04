@@ -8,7 +8,8 @@
             <p><span class="descriptionText">Description: </span> <%= @todo.description %></p>
             <p><span class="descriptionText">Created by: </span><%= @todo.user.name %></p>
             <% if @todo.owners.any? %>
-              <p><span class="descriptionText">Assigned to: </span><%= render @todo.owners %></p>
+              <p><span class="descriptionText">Assigned to: </span><%= render @todo.owners %>
+</p>
             <% end %>
              <p>
                <% if logged_in? && (current_user == @todo.user || current_user.admin?) %>

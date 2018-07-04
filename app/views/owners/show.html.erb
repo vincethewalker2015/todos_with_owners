@@ -5,10 +5,11 @@
           <div class="well">
               <br />
               <% if @owner.todos.count != 0 %>
-              <p><span class="descriptionText">Assigned to:</span> <%= @owner.todos.count %> todos</p>
+              <p><span class="descriptionText">Assigned to: </span><%= pluralize(@owner.todos.count, "todo")if @owner.todos  %></p>
                 <% else %>
                 <h4>You are not assigned to any Todos yet..</h4>
                 <% end %>
+                <%= link_to "Todo List", todos_path, class: "btn btn-warning" %>
                 <br />
             </div>
         </div>

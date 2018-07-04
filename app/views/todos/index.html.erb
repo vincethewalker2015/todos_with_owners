@@ -15,7 +15,7 @@
                <% if todo.owners.count == 0 %>
                <h5>This Todo has not yet been assigned</h5>
                <% else %>
-               <p>Assigned: <%= render todo.owners %> as Owner</p>
+               <p>Assigned to: <%= render todo.owners %> as Owner</p>
                <% end %>
                <%= link_to "View", todo_path(todo), class: "btn btn-info bttn" %>
                 <% if logged_in? && (current_user == todo.user || current_user.admin?) %>
