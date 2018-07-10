@@ -20,6 +20,7 @@
                <% else %>
                <p>Assigned to: <%= render todo.owners %> as Owner</p>
                <% end %>
+               <p>Comments: <%= todo.comments.count %></p>
                <%= link_to "View", todo_path(todo), class: "btn btn-info bttn" %>
                 <% if logged_in? && (current_user == todo.user || current_user.admin?) %>
                   <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-warning bttn" %>

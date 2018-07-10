@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2 class="text-center">To Do</h2>
+    <h2 class="text-center">To Do "<%= @todo.name %>"</h2>
       <div class="col-md-4 col-md-offset-4">
         <div class="well">
           <p><span class="descriptionText">Name:</span> <%= @todo.name %></p>
@@ -8,8 +8,7 @@
             <p><span class="descriptionText">Description: </span> <%= @todo.description %></p>
             <p><span class="descriptionText">Created by: </span><%= @todo.user.name %></p>
             <% if @todo.owners.any? %>
-              <p><span class="descriptionText">Assigned to: </span><%= render @todo.owners %>
-</p>
+              <p><span class="descriptionText">Assigned to: </span><%= render @todo.owners %></p>
             <% end %>
              <p>
                <% if logged_in? && (current_user == @todo.user || current_user.admin?) %>
@@ -20,4 +19,21 @@
         </div>
       </div>
   </div>
+
+<% if @todo.comments != 0 %>
+  <div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <h3 align="center">Comments:</h3>
+      <div id="messages">
+        <%= render partial: 'comments/comments', object: @comments %>
+      </div>
+  </div>
+</div>
+<% else %>
+  <div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <h3 align="center">No comments yet..</h3>
+  </div>
+</div>
+<% end %>
 </div>
