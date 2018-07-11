@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   
   
   resources :users
-  resources :todos
+  resources :todos do
+    resources:comments, only: [:create]
+  end
   resources :owners
   
   get '/login', to: 'sessions#new'

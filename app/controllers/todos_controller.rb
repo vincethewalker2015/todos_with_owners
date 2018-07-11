@@ -26,6 +26,7 @@ class TodosController < ApplicationController
   end
   
   def show
+    @comment = Comment.new
     @comments = @todo.comments
   end
   
